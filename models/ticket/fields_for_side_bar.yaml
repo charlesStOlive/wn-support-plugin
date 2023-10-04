@@ -1,0 +1,80 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+fields:
+    state:
+        label: waka.support::ticket.state
+        infoType: workflow
+    code:
+        label: waka.support::ticket.code
+        infoType: title
+    sb_section_i:
+        label: waka.support::ticket.sb_section_i
+        infoType: section_group
+    name:
+        label: waka.support::ticket.name
+        group: sb_section_i
+    ticket_type:
+        label: waka.support::ticket.ticket_type
+        value: ticket_type.name
+        group: sb_section_i
+    next:
+        label: waka.support::ticket.next
+        value: next.login
+        group: sb_section_i
+    parent:
+        label: waka.support::ticket.parent
+        infoType: link
+        bkRacine: waka/support/tickets/update/
+        linkValue: parent.id
+        value: parent.name
+        group: sb_section_i
+    sb_section_f:
+        label: waka.support::ticket.sb_section_f
+        infoType: section_group
+    temps:
+        label: waka.support::ticket.temps
+        span: left
+        default: 0
+        permissions: [wcli.ticket.admin.super]
+        group: sb_section_f
+    ticket_group:
+        label: waka.support::ticket.ticket_group
+        span: auto
+        type: relation
+        placeholder: waka.utils::lang.global.placeholder
+        scope: opened
+        permissions: [wcli.ticket.admin.super]
+        value: ticket_group.name
+        group: sb_section_f
+    silent_mode:
+        label: waka.support::ticket.silent_mode
+        span: left
+        type: checkbox
+        default: true
+        comment: waka.support::ticket.silent_mode_com
+        infoType: switch
+        group: sb_section_f
+    urgent:
+        label: waka.support::ticket.urgent
+        span: right
+        type: checkbox
+        infoType: switch
+        group: sb_section_f
+    user:
+        label: waka.support::ticket.user
+        span: auto
+        type: relation
+        placeholder: waka.utils::lang.global.placeholder
+        nameFrom: name
+        required: true
+        value: user.login
+        noUpdate: true
+        group: sb_section_f
+    sb_section_w_c:
+        span: auto
+        label: Historique des états
+        infoType: state_logs
+        noUpdate: true
+        src_trad: waka.support
+

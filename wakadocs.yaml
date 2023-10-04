@@ -1,0 +1,7 @@
+files:
+    wf_ticket_w:
+        title: Workflow ticket support
+        group: "01 Workflow"
+        relativePath: waka/support/docs
+        permissions: waka.support.*
+        order: 100

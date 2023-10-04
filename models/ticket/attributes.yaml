@@ -1,0 +1,31 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+icon: icon-info
+attributes:
+    urgent:
+        label: waka.support::ticket.urgent
+        type: switch
+    name:
+        label: waka.support::ticket.name
+    code:
+        label: waka.support::ticket.code
+    state:
+        label: waka.support::ticket.state
+        type: workflow
+    url:
+        label: waka.support::ticket.url
+    parent:
+        label: waka.support::ticket.parent
+    temps:
+        label: waka.support::ticket.temps
+    lastMessage:
+        label: waka.support::ticket.lastMessage
+        type: raw
+    awake_at:
+        label: waka.support::ticket.awake_at
+        type: date
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: date-medium

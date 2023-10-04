@@ -1,0 +1,16 @@
+1.0.1:
+    - First version of Support plugin.
+    - create_ticket_types_table.php
+    - create_ticket_messages_table.php
+    - create_tickets_table.php
+    - seed_ticket_types_table.php
+1.1.0:
+    - Ajout des groupes tickets.
+    - create_tickets_table_u110.php
+    - create_ticket_groups_table.php
+1.1.1:
+    - Ajout du champs parent_id pour les anciennent versions
+    - create_tickets_table_u111.php
+2.0.0:
+    - "Modifications des workflows"
+    - create_tickets_table_u200.php
