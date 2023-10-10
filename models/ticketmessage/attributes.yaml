@@ -5,5 +5,5 @@
 icon: icon-info
 attributes:
     updated_at:
-        label: waka.utils::lang.global.updated_at
+        label: waka.wutils::lang.global.updated_at
         type: date-medium

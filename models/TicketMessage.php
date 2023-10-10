@@ -9,7 +9,7 @@ use Model;
 class TicketMessage extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
-    use \Waka\Utils\Classes\Traits\DbUtils;
+    use \Waka\Wutils\Classes\Traits\DbUtils;
 
 
     /**

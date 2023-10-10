@@ -1,0 +1,12 @@
+subject = Le ticket {{ ds.code}} [{{ ds.name }}] a été crée ou mis à jours
+==
+<p>Bonjour {{ ds.user }},</p>
+<p>Un nouveau ticket à été crée ou mis à jours :  {{ ds.a_link | raw }}</p>
+<p>Liste des messages :</p>
+{% partial 'panel' body %}
+    {% for message in ds.ticket_messages|reverse %}
+        <p style="font-size:10px;word-break: normal;"> {{ message.content | replace({"\n\n": "\n"}) | striptags | escape | nl2br }}</p>
+        <hr/>
+    {% endfor %}
+{% endpartial %}
+                    

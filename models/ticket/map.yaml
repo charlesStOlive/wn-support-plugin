@@ -1,0 +1,54 @@
+main: 
+    label: Base 
+    fields:
+        state:
+            label: waka.support::lang.models.ticket.state
+            type: workflow
+        code:
+            label: waka.support::lang.models.ticket.code
+        name:
+            label: waka.support::lang.models.ticket.name
+        ticket_type:
+            label: waka.support::lang.models.ticket.ticket_type
+            type: relation
+            select: name
+        next:
+            label: waka.support::lang.models.ticket.next
+            type: relation
+            select: fullName
+        temps:
+            label: waka.support::lang.models.ticket.temps
+            type: euro
+        silent_mode:
+            label: waka.support::lang.models.ticket.silent_mode
+            type: switch
+        urgent:
+            label: waka.support::lang.models.ticket.urgent
+            type: switch
+
+forEmail: 
+    label: Pour les docs 
+    inherit: main
+    fields: 
+        a_link: 
+            label: A link 
+            valueFrom: id 
+            type: boUrl
+        ticket_messages: 
+            label: Messages 
+            type: relations
+
+
+resumer:
+    label: Resumer 
+    inherit: main
+    fields: 
+        ticket_group:
+            label: waka.support::lang.models.ticket.ticket_group
+            type: boUrl
+        parent:
+            label: waka.support::lang.models.ticket.parent
+            type: boUrl
+        state_logs:
+            label: Historique
+            type: workflowStates

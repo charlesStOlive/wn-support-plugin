@@ -1,0 +1,54 @@
+# ===================================
+#  WakaController | Workflow | Productor |  Behavior Config
+# ===================================
+
+
+modelClass: Waka\Support\Models\Ticket
+backendUrl: waka/support/tickets
+
+workflow: true 
+
+productor:
+    models: 
+        waka.support::*.ticket.*:
+            dsMap: forEmail
+
+productorIndex:
+    models: 
+        waka.support::*.tickets.*:  
+
+controllerConfig:
+    breadcrump:
+        inSettings: true 
+        title: waka.support::lang.models.ticket.label
+        rows: 
+            index: 
+                label: waka.support::lang.controllers.tickets.label
+                url: waka/support/tickets 
+    index:
+        base:
+            create: 
+                show: true
+                permissions: [waka.support.*]
+            reorder: 
+                show: true  
+                permissions: []
+            delete: 
+                show: true
+                permissions: [waka.support.*]
+        # partials:
+        #     index_btn:
+        #         url: $/waka/support/controllers/tickets/_index_btn.php
+    update:
+        partials:
+            update_btn:
+                url: $/waka/support/controllers/tickets/_update_btn.php
+
+ 
+reorder:
+    title: waka.wutils::lang.global.reorder 
+    # reorderRelations:
+    #     model:
+    #         title: Réordonner le {model} # Reorder Title
+    #         nameFrom: name # Attribute name
+    #         relationName: setups   # Model Class name

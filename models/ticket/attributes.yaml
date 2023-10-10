@@ -5,27 +5,27 @@
 icon: icon-info
 attributes:
     urgent:
-        label: waka.support::ticket.urgent
+        label: waka.support::lang.models.ticket.urgent
         type: switch
     name:
-        label: waka.support::ticket.name
+        label: waka.support::lang.models.ticket.name
     code:
-        label: waka.support::ticket.code
+        label: waka.support::lang.models.ticket.code
     state:
-        label: waka.support::ticket.state
+        label: waka.support::lang.models.ticket.state
         type: workflow
     url:
-        label: waka.support::ticket.url
+        label: waka.support::lang.models.ticket.url
     parent:
-        label: waka.support::ticket.parent
+        label: waka.support::lang.models.ticket.parent
     temps:
-        label: waka.support::ticket.temps
+        label: waka.support::lang.models.ticket.temps
     lastMessage:
-        label: waka.support::ticket.lastMessage
+        label: waka.support::lang.models.ticket.lastMessage
         type: raw
     awake_at:
-        label: waka.support::ticket.awake_at
+        label: waka.support::lang.models.ticket.awake_at
         type: date
     updated_at:
-        label: waka.utils::lang.global.updated_at
+        label: waka.wutils::lang.global.updated_at
         type: date-medium

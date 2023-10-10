@@ -10,7 +10,8 @@ use Carbon\Carbon;
 class TicketGroup extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
-    use \Waka\Utils\Classes\Traits\DbUtils;
+    use \Waka\Wutils\Classes\Traits\DbUtils;
+    use \Waka\Ds\Classes\Traits\DsResolver;
 
 
     /**

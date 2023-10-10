@@ -5,15 +5,15 @@
 icon: icon-info
 attributes:
     name:
-        label: waka.support::tickettype.name
+        label: waka.support::lang.models.tickettype.name
     is_facturable:
-        label: waka.support::tickettype.is_facturable
+        label: waka.support::lang.models.tickettype.is_facturable
         type: switch
     is_for_super_user:
-        label: waka.support::tickettype.is_for_super_user
+        label: waka.support::lang.models.tickettype.is_for_super_user
         type: switch
     description:
-        label: waka.support::tickettype.description
+        label: waka.support::lang.models.tickettype.description
     updated_at:
-        label: waka.utils::lang.global.updated_at
+        label: waka.wutils::lang.global.updated_at
         type: date-medium

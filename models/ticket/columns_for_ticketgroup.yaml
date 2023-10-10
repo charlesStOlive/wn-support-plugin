@@ -1,45 +1,45 @@
 columns:
     name:
-        label: 'waka.support::ticket.name'
+        label: 'waka.support::lang.models.ticket.name'
         searchable: true
     code:
-        label: 'waka.support::ticket.code'
+        label: 'waka.support::lang.models.ticket.code'
         searchable: true
     ticket_type_r:
-        label: 'waka.support::ticket.ticket_type'
+        label: 'waka.support::lang.models.ticket.ticket_type'
         relation: ticket_type
         select: name
         searchable: true
     state:
-        label: 'waka.support::ticket.state'
+        label: 'waka.support::lang.models.ticket.state'
         type: workflow
         searchable: true
     next_r:
-        label: 'waka.support::ticket.next'
+        label: 'waka.support::lang.models.ticket.next'
         relation: next
         searchable: true
         select: 'CONCAT(first_name,'' '',last_name)'
     temps:
-        label: 'waka.support::ticket.temps'
+        label: 'waka.support::lang.models.ticket.temps'
         searchable: true
     ticket_group_r:
-        label: 'waka.support::ticket.ticket_group'
+        label: 'waka.support::lang.models.ticket.ticket_group'
         relation: ticket_group
         select: name
         searchable: true
     created_at:
-        label: 'waka.support::ticket.created_at'
+        label: 'waka.support::lang.models.ticket.created_at'
         type: timetense
         searchable: true
     user_r:
-        label: 'waka.support::ticket.user'
+        label: 'waka.support::lang.models.ticket.user'
         relation: user
         searchable: true
         select: 'CONCAT(first_name,'' '',last_name)'
         invisible: true
     updated_at:
-        label: 'waka.utils::lang.global.updated_at'
+        label: 'waka.wutils::lang.global.updated_at'
         type: timetense
     sort_order:
-        label: 'waka.utils::lang.global.sort_order'
+        label: 'waka.wutils::lang.global.sort_order'
         invisible: true

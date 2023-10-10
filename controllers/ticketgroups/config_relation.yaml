@@ -3,7 +3,7 @@
 # ===================================
 
 tickets:
-    label: waka.support::ticketgroup.tickets
+    label: waka.support::lang.models.ticketgroup.tickets
     manage:
         list: $/waka/support/models/ticket/columns_for_ticketgroup.yaml
         scope: noGroup

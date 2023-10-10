@@ -1,0 +1,5 @@
+main: 
+    fields:
+        name: 
+            label: Groupe
+  

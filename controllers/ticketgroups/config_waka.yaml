@@ -1,0 +1,47 @@
+# ===================================
+#  WakaController | Workflow | Productor |  Behavior Config
+# ===================================
+
+
+modelClass: Waka\Support\Models\TicketGroup
+backendUrl: waka/support/ticketgroups
+
+workflow: false 
+
+productor:
+    models: 
+        waka.support::*.ticketgroup.*:
+    handlers:
+        label: Autre opérations
+        requests:
+            onClotureTicketGroup:
+                name: Cloturer et facturer ce groupe
+
+
+controllerConfig:
+    breadcrump:
+        inSettings: true 
+        title: waka.support::lang.models.ticketgroup.label
+        rows: 
+            index: 
+                label: waka.support::lang.controllers.ticketgroups.label
+                url: waka/support/ticketgroups 
+    index:
+        base:
+            create: 
+                show: true
+                permissions: [waka.support.*]
+            reorder: 
+                show: false  
+                permissions: []
+            delete: 
+                show: true
+                permissions: [waka.support.*]
+        # partials:
+        #     index_btn:
+        #         url: $/waka/support/controllers/ticketgroups/_index_btn.php
+    update:
+        partials:
+            update_btn:
+                url: $/waka/support/controllers/ticketgroups/_update_btn.php
+

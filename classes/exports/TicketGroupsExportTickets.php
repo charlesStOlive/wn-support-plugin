@@ -13,9 +13,9 @@ class TicketGroupsExportTickets implements FromCollection, WithHeadings, ShouldA
 {
     public $parentId;
 
-    public function __construct($listId, $parentId)
+    public function __construct($initOptions)
     {
-        $this->parentId = $parentId;
+        $this->parentId = $initOptions['modelId'];
     }
 
     //startKeep/
@@ -24,7 +24,6 @@ class TicketGroupsExportTickets implements FromCollection, WithHeadings, ShouldA
     {
         return [
             'id',
-            'name',
             'code',
             'ticket_type',
             'temps',
@@ -38,40 +37,30 @@ class TicketGroupsExportTickets implements FromCollection, WithHeadings, ShouldA
         ];
     }
 
-    public function headingsTemps(): array
-    {
-        return [
-            'id',
-            'name',
-            'code',
-            'ticket_type_id',
-            'temps',
-            'state',
-            'user_id',
-            'next_id',
-            'url',
-            'ticket_group_id',
-            'awake_at',
-        ];
-    }
-
     public function collection()
     {
         $parent = TicketGroup::find($this->parentId);
-        $request = $parent->tickets()->with('ticket_group', 'ticket_type', 'user', 'next')->get($this->headingsTemps());
+        $request = $parent->tickets()->with('ticket_group', 'ticket_type', 'user', 'next')->get();
         $request->transform(function ($item) {
-            //trace_log($item->toArray());
+            $returnedItem = [];
             $messages = $item->getMessagesAsTxt();
-            $state = 
-            $item['messages'] = $messages;
-            $item['ticket_group'] = $item['ticket_group']['name'] ?? null; 
-            $item['ticket_type'] = $item['ticket_type']['name'] ?? null; 
-            $item['user'] = $item['user']['login'] ?? null; 
-            $item['next'] = $item['next']['login'] ?? null;
-            if($item['state'] != 'sleep') {
-                $item['awake_at'] = null;
+            $returnedItem['id'] = $item->id;
+            $returnedItem['code'] = $item->code;
+            $returnedItem['ticket_type'] = $item->ticket_type->name ?? null; 
+            $returnedItem['temps'] = $item->temps;
+            $returnedItem['state'] = $item->state;
+            $returnedItem['user'] = $item->user->fullName ?? false; 
+            $returnedItem['next'] = $item->next->fullName ?? null;
+            $returnedItem['url'] = $item->url ?? null; 
+            $returnedItem['ticket_group'] = $item->ticket_group->name ?? null; 
+            
+            if($item->state != 'sleep') {
+                $item->awake_at = null;
             }
-            return $item;
+            $returnedItem['awake_at'] = $item->awake_at;
+            $returnedItem['messages'] = $messages;
+            
+            return $returnedItem;
         });;
         return $request;
     }

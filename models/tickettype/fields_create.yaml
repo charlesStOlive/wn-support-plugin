@@ -4,20 +4,20 @@
 
 fields:
     name:
-        label: waka.support::tickettype.name
+        label: waka.support::lang.models.tickettype.name
         span: left
         required: true
     is_facturable:
-        label: waka.support::tickettype.is_facturable
+        label: waka.support::lang.models.tickettype.is_facturable
         span: left
         type: switch
         required: true
         default: false
     is_for_super_user:
-        label: waka.support::tickettype.is_for_super_user
+        label: waka.support::lang.models.tickettype.is_for_super_user
         span: left
         type: switch
     description:
-        label: waka.support::tickettype.description
+        label: waka.support::lang.models.tickettype.description
         span: full
         type: textarea

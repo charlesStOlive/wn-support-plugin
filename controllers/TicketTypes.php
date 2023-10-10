@@ -2,36 +2,31 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use System\Classes\SettingsManager;
-
+use System\Classes\SettingsManager; 
 /**
- * Ticket Type Back-end Controller
+ * Ticket Types Backend Controller
  */
 class TicketTypes extends Controller
 {
+    /**
+     * @var array Behaviors that are implemented by this controller.
+     */
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        'Waka.Utils.Behaviors.BtnsBehavior',
-        'Backend.Behaviors.ReorderController',
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
+        \Waka\Wutils\Behaviors\WakaReorderController::class,
     ];
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
-    public $btnsConfig = 'config_btns.yaml';
-    public $reorderConfig = 'config_reorder.yaml';
 
     public $requiredPermissions = ['waka.support.*'];
-    //FIN DE LA CONFIG AUTO
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('October.System', 'system', 'settings');
-        SettingsManager::setContext('Waka.Support', 'TicketTypes');
+        BackendMenu::setContext('Winter.System', 'system', 'settings');
+        SettingsManager::setContext('Waka.Support', 'ticketTypes');
     }
 
-    //startKeep/
-
-        //endKeep/
+    
+    
 }
-

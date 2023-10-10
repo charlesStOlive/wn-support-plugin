@@ -15,9 +15,9 @@ class Ticket extends Model
     use \Winter\Storm\Database\Traits\Validation;
     use \Winter\Storm\Database\Traits\SimpleTree;
     use \Winter\Storm\Database\Traits\Sortable;
-    use \Waka\Utils\Classes\Traits\DataSourceHelpers;
-    use \Waka\Utils\Classes\Traits\WakaWorkflowTrait;
-    use \Waka\Utils\Classes\Traits\DbUtils;
+    use \Waka\Workflow\Classes\Traits\WakaWorkflowTrait;
+    use \Waka\Wutils\Classes\Traits\DbUtils;
+    use \Waka\Ds\Classes\Traits\DsResolver;
 
 
     /**
@@ -131,7 +131,7 @@ class Ticket extends Model
     public function beforeValidate() {
         //trace_log(post());
         if(!$this->ticket_messages()->withDeferred(post('_session_key'))->count()) {
-            throw new \ValidationException(['ticket_messages' => \Lang::get('waka.support::ticket.e.ticket_messages_missing')]);
+            throw new \ValidationException(['ticket_messages' => \Lang::get('waka.support::lang.models.ticket.e.ticket_messages_missing')]);
         }
 
     }
@@ -223,6 +223,13 @@ class Ticket extends Model
         return \Waka\Support\Models\Settings::get('actual_ticket_group' ,null);
     }
 
+    public function getTicketTypeNameAttribute() {
+        return $this->ticket_type->name;
+    }
+    public function getNextNameAttribute() {
+        return $this->next->fullName;
+    }
+
     /**
      * SCOPES
      */
@@ -287,6 +294,9 @@ class Ticket extends Model
     /**
      * OTHERS
      */
+    public function getEmails() {
+        return [$this->next->email];
+    }
 
     public function createChildTicket()
     {

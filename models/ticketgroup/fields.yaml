@@ -4,15 +4,12 @@
 
 fields:
     tickets:
-        label: waka.support::ticketgroup.tickets
+        label: waka.support::lang.models.ticketgroup.tickets
         span: full
         type: partial
         path: field_tickets
 secondaryTabs:
     fields:
         infos:
-            label: waka.support::ticketgroup.infos
-            span: full
             type: modelinfo
             editPermissions: [nobody]
-            src: waka/support/models/ticketgroup/fields_for_side_bar.yaml
