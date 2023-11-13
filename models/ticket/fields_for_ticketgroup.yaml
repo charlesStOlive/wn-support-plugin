@@ -1,33 +1,33 @@
 fields:
     silent_mode:
-        label: 'waka.support::ticket.silent_mode'
+        label: 'waka.support::lang.models.ticket.silent_mode'
         span: left
         type: checkbox
-        commentAbove: 'waka.support::ticket.silent_mode_com'
+        commentAbove: 'waka.support::lang.models.ticket.silent_mode_com'
     urgent:
-        label: 'waka.support::ticket.urgent'
+        label: 'waka.support::lang.models.ticket.urgent'
         span: right
         type: checkbox
     name:
-        label: 'waka.support::ticket.name'
+        label: 'waka.support::lang.models.ticket.name'
         span: full
         required: true
     ticket_type:
-        label: 'waka.support::ticket.ticket_type'
+        label: 'waka.support::lang.models.ticket.ticket_type'
         span: auto
         type: dropdown
-        placeholder: 'waka.utils::lang.global.placeholder'
+        placeholder: 'waka.wutils::lang.global.placeholder'
         required: true
         options: listTicketTypes
     support_user:
-        label: 'waka.support::ticket.support_user'
+        label: 'waka.support::lang.models.ticket.support_user'
         span: left
         type: dropdown
-        placeholder: 'waka.utils::lang.global.placeholder'
+        placeholder: 'waka.wutils::lang.global.placeholder'
         options: listSupportUser
     support_client:
-        label: 'waka.support::ticket.support_client'
+        label: 'waka.support::lang.models.ticket.support_client'
         span: right
         type: dropdown
-        placeholder: 'waka.utils::lang.global.placeholder'
+        placeholder: 'waka.wutils::lang.global.placeholder'
         options: ListClientTeam

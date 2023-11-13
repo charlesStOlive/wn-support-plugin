@@ -4,21 +4,21 @@
 
 columns:
     name:
-        label: waka.support::ticketgroup.name
+        label: waka.support::lang.models.ticketgroup.name
         searchable: true
     is_factured:
-        label: waka.support::ticketgroup.is_factured
+        label: waka.support::lang.models.ticketgroup.is_factured
         type: switch
         searchable: false
         sortable: true
     qty:
-        label: waka.support::ticketgroup.qty
+        label: waka.support::lang.models.ticketgroup.qty
         searchable: false
         sortable: false
     heures:
-        label: waka.support::ticketgroup.heures
+        label: waka.support::lang.models.ticketgroup.heures
         searchable: false
         sortable: false
     updated_at:
-        label: waka.utils::lang.global.updated_at
+        label: waka.wutils::lang.global.updated_at
         type: timetense

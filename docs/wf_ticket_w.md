@@ -25,13 +25,13 @@
 
 ## Liste des états
 * **Brouillon** | code : draft
-* **Retour Notilac attendu** | code : wait_support
-* **Retour Client attendu** | code : wait_managment
-* **En production** | code : running
+* **En attente de la réponse de Notilac** | code : wait_support
+* **En attente de la réponse du client** | code : wait_managment
+* **En cours** | code : running
 * **Ticket validé** | code : validated
-* **En sommeil** | code : sleep
+* **Mis en veille** | code : sleep
 * **Archivé** | code : archived
-* **Abandon du ticket** | code : abdn
+* **Ticket abandonné** | code : abdn
 
 ## Liste des transitions
 * **Abandonner** | code : wait_support_to_abdn
@@ -42,35 +42,35 @@
     * Bouton : Abandonner le ticket
     * Liste des fonctions 
         *  isCreatorAsking | type : gard
-* **Archivage** | code : validated_to_archived
-    * Bouton : Archivage du ticket
-* **Archivage facturation** | code : to_archived_factu
-    * Bouton : Archivage facturation
+* **Archiver** | code : validated_to_archived
+    * Bouton : Archiver le ticket
+* **Facturation et archivage** | code : to_archived_factu
+    * Bouton : Facturation et archivage
     * Liste des fonctions 
         *  createChildTicket | type : enter
-* **Envoyer  client** | code : wait_support_to_wait_managment
+* **Envoyer au client** | code : wait_support_to_wait_managment
     * Bouton : Envoyer au client
     * Liste des fonctions 
         *  isSupport | type : gard
         *  sendNotification | type : prod
             * code : waka.support::new_ticket 
             * mode : client 
-* **FIN prod** | code : running_to_wait_managment
+* **Fin de production** | code : running_to_wait_managment
     * Bouton : Envoyer au client
     * Liste des fonctions 
         *  isSupport | type : gard
-* **Mise en sommeil ** | code : wait_support_to_sleep
-    * Bouton : Mise en sommeil du ticket
+* **Mettre en veille** | code : wait_support_to_sleep
+    * Bouton : Mettre le ticket en sommeil
     * Liste des fonctions 
         *  isSupport | type : gard
         *  removeTicketGroup | type : enter
         *  askSleep | type : prod
-* **Mise en sommeil ** | code : wait_managment_to_sleep
-    * Bouton : Mise en sommeil du ticket
+* **Mettre en veille** | code : wait_managment_to_sleep
+    * Bouton : Mettre le ticket en sommeil
     * Liste des fonctions 
         *  removeTicketGroup | type : enter
         *  askSleep | type : prod
-* **En Production** | code : wait_support_to_running
+* **En production** | code : wait_support_to_running
     * Bouton : En cours de production
     * Liste des fonctions 
         *  isSupport | type : gard
@@ -81,24 +81,24 @@
             * code : waka.support::new_ticket 
             * mode : support 
 * **Réveiller (Notilac)** | code : sleep_to_wait_support
-    * Bouton : Réveiller et transmettre N
+    * Bouton : Réveiller et transmettre à Notilac
     * Liste des fonctions 
         *  isAwakable | type : gard
         *  cleanAwake | type : enter
-* **Transmission Client** | code : draft_to_wait_managment
-    * Bouton : Transmettre au  client
+* **Transmettre au client** | code : draft_to_wait_managment
+    * Bouton : Transmettre au client
     * Liste des fonctions 
         *  isSupport | type : gard
         *  sendNotification | type : prod
             * code : waka.support::new_ticket 
             * mode : client 
-* **Transmission Notilac** | code : draft_to_wait_support
+* **Transmettre à Notilac** | code : draft_to_wait_support
     * Bouton : Transmettre à Notilac
     * Liste des fonctions 
         *  sendNotification | type : prod
             * code : waka.support::new_ticket 
             * mode : support 
-* **Validation** | code : wait_managment_to_validated
+* **Valider** | code : wait_managment_to_validated
     * Bouton : Valider le ticket
     * Liste des fonctions 
         *  isClient | type : gard
@@ -111,12 +111,12 @@
         *  isCreatorAsking | type : gard
 
 ## Les jeux de validations des champs
-* **default**: support_client et support_user obligatoire
+* **default**: Support client et support utilisateur sont obligatoires
 
 ## Les scopes
 * **running**: Tickets en cours | [draft,wait_support,wait_managment,running, validated,sleep]  
 * **runningNotSleeping**:  | [draft,wait_support,wait_managment,running, validated]  
-* **closed**: Tickets fermé | [archived,abdn]  
+* **closed**: Tickets fermés | [archived,abdn]  
 
 ## Les executions automatiques par taches cron auront lieu par défaut à  22h30
 Liste des cron auto 

@@ -15,7 +15,15 @@ class CreateTicketsTable extends Migration
             $table->string('name');
             $table->integer('ticket_type_id')->unsigned();
             $table->string('state')->nullable();
+            $table->string('wf')->nullable();
             $table->integer('user_id')->unsigned();
+            $table->boolean('urgent')->nullable();
+            $table->string('code')->nullable();
+            $table->integer('support_user_id')->unsigned()->nullable();
+            $table->integer('support_client_id')->unsigned()->nullable();
+            $table->integer('next_id')->unsigned()->nullable();
+            $table->integer('ticket_group_id')->unsigned()->nullable();
+            $table->date('awake_at')->nullable();
             $table->string('url')->nullable();
             $table->double('temps', 15, 2)->default(0);
             //simpletree

@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: waka.support::ticketgroup.form_name
+name: waka.support::lang.controllers.ticketgroups.label
 
 # Model Form Field configuration
 form: $/waka/support/models/ticketgroup/fields.yaml
@@ -16,17 +16,17 @@ defaultRedirect: waka/support/ticketgroups
 
 # Create page
 create:
-    title: waka.support::ticketgroup.create
+    title: backend::lang.form.create_title
     redirect: waka/support/ticketgroups/update/:id
     redirectClose: waka/support/ticketgroups
     form: $/waka/support/models/ticketgroup/fields_create.yaml
 
 # Update page
 update:
-    title: waka.support::ticketgroup.update
+    title: backend::lang.form.update_title
     redirect: waka/support/ticketgroups/update/:id
     redirectClose: waka/support/ticketgroups
 
 # Preview page
 preview:
-    title: waka.support::ticketgroup.preview_name
+    title: backend::lang.form.preview_title

@@ -4,6 +4,6 @@
 
 fields:
     name:
-        label: waka.support::ticketgroup.name
+        label: waka.support::lang.models.ticketgroup.name
         span: left
         required: true

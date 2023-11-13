@@ -1,6 +1,0 @@
-modelClass: Waka\Support\Models\Ticket
-baseMode: buttonList
-
-places:
-  brouillon:
-    mode: buttons 

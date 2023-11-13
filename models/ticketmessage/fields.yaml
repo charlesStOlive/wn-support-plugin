@@ -4,11 +4,11 @@
 
 fields:
   content:
-    label: waka.support::ticketmessage.content
+    label: waka.support::lang.models.ticketmessage.content
     type: wakaeditor
     size: huge
   photos:
-      label: waka.support::ticketmessage.photos
+      label: waka.support::lang.models.ticketmessage.photos
       span: full
       type: fileupload
       mode: image

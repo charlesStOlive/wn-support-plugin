@@ -5,17 +5,17 @@
 icon: icon-info
 attributes:
     name:
-        label: waka.support::ticketgroup.name
+        label: waka.support::lang.models.ticketgroup.name
     is_factured:
-        label: waka.support::ticketgroup.is_factured
+        label: waka.support::lang.models.ticketgroup.is_factured
         type: switch
     qty:
-        label: waka.support::ticketgroup.qty
+        label: waka.support::lang.models.ticketgroup.qty
     heures:
-        label: waka.support::ticketgroup.heures
+        label: waka.support::lang.models.ticketgroup.heures
     total:
-        label: waka.support::ticketgroup.total
+        label: waka.support::lang.models.ticketgroup.total
         type: euro
     updated_at:
-        label: waka.utils::lang.global.updated_at
+        label: waka.wutils::lang.global.updated_at
         type: date-medium

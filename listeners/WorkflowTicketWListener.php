@@ -1,7 +1,7 @@
 <?php namespace Waka\Support\Listeners;
 
 use Carbon\Carbon;
-use Waka\Utils\Classes\Listeners\WorkflowListener;
+use Waka\Workflow\Classes\Listeners\WorkflowListener;
 use Waka\Support\Models\Settings;
 use Backend\Models\User;
 
@@ -116,15 +116,14 @@ class WorkflowTicketWListener extends WorkflowListener
     {
         if($model->silent_mode) return;
         $user = User::find($model->next_id);
-        $url = \Backend::url('waka/support/tickets/update/'.$model->id);
-        $ticket = $model->toArray();
-        $messages = $model['ticket_messages'] ?? [];
+        $vars = $model->dsMap('forEmail');
+        //trace_log('sendNotification : ',$vars);
+        $messages = $vars['ds']['ticket_messages'] ?? [];
         if(!count($messages) && post('_session_key')) {
-            $ticket['ticket_messages'] = $model->ticket_messages()->withDeferred(post('_session_key'))->get()->toArray();
+            $vars['ds']['ticket_messages'] = $model->ticket_messages()->withDeferred(post('_session_key'))->get()->toArray();
         }
-        $vars = compact('ticket','user','url');
-        \Mail::queue('waka.support::mail.new_ticket', $vars, function($message) use($user) {
-            $message->to($user->email, 'Notilac: '.$user->login);
+        \Mail::queue('waka.support::mail.ticket.base', $vars, function($message) use($user) {
+            $message->to($user->email, 'Notilac: '.$user->fullName);
         });
     }
 

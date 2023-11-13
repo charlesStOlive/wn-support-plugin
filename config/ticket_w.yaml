@@ -1,25 +1,25 @@
 ticket_w:
     type: state_machine
     metadata: 
-        name: waka.support::ticket_w.name 
-        com: waka.support::ticket_w.com 
+        name: waka.support::lang.workflows.ticket_w.name 
+        com: waka.support::lang.workflows.ticket_w.com 
         cron_auto_time: 22h30
         rulesSets:
             default:
                 fields:  
                     support_user: required              
                     support_client: required              
-                messages: waka.support::ticket_w_errors
+                # messages: waka.support::ticket_w_errors
 
         scopes:
             running:
-                label: waka.support::ticket_w.scopes.running
+                label: waka.support::lang.workflows.ticket_w.scopes.running
                 value: [draft,wait_support,wait_managment,running, validated,sleep]             
             runningNotSleeping:
-                label: waka.support::ticket_w.scopes.runningNotSleeping
+                label: waka.support::lang.workflows.ticket_w.scopes.runningNotSleeping
                 value: [draft,wait_support,wait_managment,running, validated]             
             closed:
-                label: waka.support::ticket_w.scopes.closed
+                label: waka.support::lang.workflows.ticket_w.scopes.closed
                 value: [archived,abdn]             
     marking_store:
         type: single_state
@@ -29,52 +29,52 @@ ticket_w:
     places:
         draft:
             metadata:
-                label: waka.support::ticket_w.places.draft 
+                label: waka.support::lang.workflows.ticket_w.places.draft 
                 icon: wicon-pencil2
                 hidden_fields: [awake_at]
         wait_support:
             metadata:
-                label: waka.support::ticket_w.places.wait_support 
-                com: waka.support::ticket_w.places.comments.wait_support 
+                label: waka.support::lang.workflows.ticket_w.places.wait_support 
+                com: waka.support::lang.workflows.ticket_w.places.comments.wait_support 
                 icon: icon-clock-o
                 hidden_fields: [awake_at]
         wait_managment:
             metadata:
-                label: waka.support::ticket_w.places.wait_managment 
-                com: waka.support::ticket_w.places.comments.wait_managment 
+                label: waka.support::lang.workflows.ticket_w.places.wait_managment 
+                com: waka.support::lang.workflows.ticket_w.places.comments.wait_managment 
                 icon: icon-clock-o
                 hidden_fields: [awake_at]
         running:
             metadata:
-                label: waka.support::ticket_w.places.running 
+                label: waka.support::lang.workflows.ticket_w.places.running 
                 icon: icon-cogs
                 hidden_fields: [awake_at]
         validated:
             metadata:
-                label: waka.support::ticket_w.places.validated 
+                label: waka.support::lang.workflows.ticket_w.places.validated 
                 icon: icon-check
                 hidden_fields: [awake_at]
         sleep:
             metadata:
-                label: waka.support::ticket_w.places.sleep 
+                label: waka.support::lang.workflows.ticket_w.places.sleep 
                 cron_auto: [sleep_to_wait_support]
                 icon: icon-bed
         archived:
             metadata:
-                label: waka.support::ticket_w.places.archived 
+                label: waka.support::lang.workflows.ticket_w.places.archived 
                 icon: icon-cubes
                 hidden_fields: [awake_at]
         abdn:
             metadata:
-                label: waka.support::ticket_w.places.abdn 
+                label: waka.support::lang.workflows.ticket_w.places.abdn 
                 icon: icon-trash-o
                 hidden_fields: [awake_at]
     initial_places: draft  # or set to an array if multiple initial places
     transitions:
         wait_support_to_abdn:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_support_to_abdn 
-                button: waka.support::ticket_w.trans.buttons.wait_support_to_abdn 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_support_to_abdn 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_support_to_abdn 
                 redirect: "redirect:1"
                 color: danger
                 fncs:
@@ -84,8 +84,8 @@ ticket_w:
             to: abdn
         wait_managment_to_abdn:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_managment_to_abdn 
-                button: waka.support::ticket_w.trans.buttons.wait_managment_to_abdn 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_managment_to_abdn 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_managment_to_abdn 
                 redirect: "redirect:1"
                 color: danger
                 fncs:
@@ -95,15 +95,15 @@ ticket_w:
             to: abdn
         validated_to_archived:
             metadata: 
-                label: waka.support::ticket_w.trans.validated_to_archived 
-                button: waka.support::ticket_w.trans.buttons.validated_to_archived 
+                label: waka.support::lang.workflows.ticket_w.trans.validated_to_archived 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.validated_to_archived 
                 redirect: "close:1"
             from: validated
             to: archived
         to_archived_factu:
             metadata: 
-                label: waka.support::ticket_w.trans.to_archived_factu 
-                button: waka.support::ticket_w.trans.buttons.to_archived_factu 
+                label: waka.support::lang.workflows.ticket_w.trans.to_archived_factu 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.to_archived_factu 
                 hidden: true
                 fncs:
                     createChildTicket:
@@ -114,8 +114,8 @@ ticket_w:
             to: archived
         wait_support_to_wait_managment:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_support_to_wait_managment 
-                button: waka.support::ticket_w.trans.buttons.wait_support_to_wait_managment 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_support_to_wait_managment 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_support_to_wait_managment 
                 redirect: "redirect:1"
                 fncs:
                     isSupport:
@@ -129,8 +129,8 @@ ticket_w:
             to: wait_managment
         running_to_wait_managment:
             metadata: 
-                label: waka.support::ticket_w.trans.running_to_wait_managment 
-                button: waka.support::ticket_w.trans.buttons.running_to_wait_managment 
+                label: waka.support::lang.workflows.ticket_w.trans.running_to_wait_managment 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.running_to_wait_managment 
                 redirect: "close:1"
                 fncs:
                     isSupport:
@@ -139,8 +139,8 @@ ticket_w:
             to: wait_managment
         wait_support_to_sleep:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_support_to_sleep 
-                button: waka.support::ticket_w.trans.buttons.wait_support_to_sleep 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_support_to_sleep 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_support_to_sleep 
                 fncs:
                     isSupport:
                         type: gard
@@ -152,8 +152,8 @@ ticket_w:
             to: sleep
         wait_managment_to_sleep:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_managment_to_sleep 
-                button: waka.support::ticket_w.trans.buttons.wait_managment_to_sleep 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_managment_to_sleep 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_managment_to_sleep 
                 fncs:
                     removeTicketGroup:
                         type: enter
@@ -163,8 +163,8 @@ ticket_w:
             to: sleep
         wait_support_to_running:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_support_to_running 
-                button: waka.support::ticket_w.trans.buttons.wait_support_to_running 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_support_to_running 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_support_to_running 
                 redirect: "redirect:1"
                 fncs:
                     isSupport:
@@ -173,8 +173,8 @@ ticket_w:
             to: running
         wait_managment_to_wait_support:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_managment_to_wait_support 
-                button: waka.support::ticket_w.trans.buttons.wait_managment_to_wait_support 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_managment_to_wait_support 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_managment_to_wait_support 
                 redirect: "close:1"
                 fncs:
                     sendNotification:
@@ -186,8 +186,8 @@ ticket_w:
             to: wait_support
         sleep_to_wait_support:
             metadata: 
-                label: waka.support::ticket_w.trans.sleep_to_wait_support 
-                button: waka.support::ticket_w.trans.buttons.sleep_to_wait_support 
+                label: waka.support::lang.workflows.ticket_w.trans.sleep_to_wait_support 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.sleep_to_wait_support 
                 redirect: "redirect:1"
                 fncs:
                     isAwakable:
@@ -198,8 +198,8 @@ ticket_w:
             to: wait_support
         draft_to_wait_managment:
             metadata: 
-                label: waka.support::ticket_w.trans.draft_to_wait_managment 
-                button: waka.support::ticket_w.trans.buttons.draft_to_wait_managment 
+                label: waka.support::lang.workflows.ticket_w.trans.draft_to_wait_managment 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.draft_to_wait_managment 
                 redirect: "redirect:1"
                 fncs:
                     isSupport:
@@ -213,8 +213,8 @@ ticket_w:
             to: wait_managment
         draft_to_wait_support:
             metadata: 
-                label: waka.support::ticket_w.trans.draft_to_wait_support 
-                button: waka.support::ticket_w.trans.buttons.draft_to_wait_support 
+                label: waka.support::lang.workflows.ticket_w.trans.draft_to_wait_support 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.draft_to_wait_support 
                 redirect: "redirect:1"
                 fncs:
                     sendNotification:
@@ -226,9 +226,9 @@ ticket_w:
             to: wait_support
         wait_managment_to_validated:
             metadata: 
-                label: waka.support::ticket_w.trans.wait_managment_to_validated 
-                button: waka.support::ticket_w.trans.buttons.wait_managment_to_validated 
-                com: waka.support::ticket_w.trans.comments.wait_managment_to_validated 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_managment_to_validated 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_managment_to_validated 
+                com: waka.support::lang.workflows.ticket_w.trans.comments.wait_managment_to_validated 
                 redirect: "close:1"
                 color: success
                 fncs:
@@ -243,8 +243,8 @@ ticket_w:
             to: validated
         draft_to_validated:
             metadata: 
-                label: waka.support::ticket_w.trans.draft_to_validated 
-                button: waka.support::ticket_w.trans.buttons.draft_to_validated 
+                label: waka.support::lang.workflows.ticket_w.trans.draft_to_validated 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.draft_to_validated 
                 redirect: "close:1"
                 fncs:
                     isCreatorAsking:

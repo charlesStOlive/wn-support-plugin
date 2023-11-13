@@ -2,42 +2,39 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-
 /**
- * Ticket Back-end Controller
+ * Tickets Backend Controller
  */
 class Tickets extends Controller
 {
+    /**
+     * @var array Behaviors that are implemented by this controller.
+     */
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        'Waka.Utils.Behaviors.BtnsBehavior',
-        'Backend.Behaviors.RelationController',
-        'Waka.ImportExport.Behaviors.ExcelImport',
-        'Waka.ImportExport.Behaviors.ExcelExport',
-        'Backend.Behaviors.ReorderController',
-        'Waka.Utils.Behaviors.WorkflowBehavior',
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\RelationController::class,
+        \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
+        \Waka\Productor\Behaviors\ProductorBehavior::class,
+        \Waka\Productor\Behaviors\ProductorIndexBehavior::class,
+        \Waka\Wutils\Behaviors\WakaReorderController::class,
+        \Waka\Workflow\Behaviors\WorkflowBehavior::class,
     ];
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
-    public $btnsConfig = 'config_btns.yaml';
-    public $reorderConfig = 'config_reorder.yaml';
-    public $relationConfig = 'config_relation.yaml';
-    public $workflowConfig = 'config_workflow.yaml'; 
 
     public $requiredPermissions = ['waka.support.*'];
-    //FIN DE LA CONFIG AUTO
-    //startKeep/
+
     public $wfSleepWidget;
 
     public function __construct()
     {
         parent::__construct();
         BackendMenu::setContext('Waka.Support', 'support', 'side-menu-tickets');
+        //
         $this->addCss('/plugins/waka/support/assets/css/messages_list.css');
         $this->wfSleepWidget = $this->createSleepFormWidget();
     }
 
+    
     public function update($id)
     {
         $this->bodyClass = 'compact-container';
@@ -97,6 +94,4 @@ class Tickets extends Controller
         $widget->bindToController();
         return $widget;
     }
-    //endKeep/
 }
-

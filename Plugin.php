@@ -18,7 +18,7 @@ class Plugin extends PluginBase
      * @var array Plugin dependencies
      */
     public $require = [
-        'Waka.Utils',
+        'Waka.Wutils',
     ];
 
     /**
@@ -42,7 +42,6 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-        \DataSources::registerDataSources(plugins_path() . '/waka/support/config/datasources.yaml');
         Event::subscribe(new \Waka\Support\Listeners\WorkflowTicketWListener);
     }
 
@@ -52,6 +51,42 @@ class Plugin extends PluginBase
             '/waka/support/config/ticket_w.yaml',
         ];
     }
+
+    public function registerExcelExport(): array
+    {
+        return [
+            'waka.support::ee.tickets.base' => [
+                'name' => "Exporter les tickets",
+                'output_name' => "Export tickets",
+                'class' => \Waka\Support\Classes\Exports\TicketsExportMessages::class
+            ],
+        ];
+
+    }
+
+    public function registerExcelRelationExport(): array
+    {
+        return [
+            'waka.support::ere.ticketgroup.base' => [
+                'name' => "Exporter les tickets du groupe",
+                'output_name' => "Export tickets du groupe",
+                'class' => \Waka\Support\Classes\Exports\TicketGroupsExportTickets::class
+            ],
+        ];
+
+    }
+
+    public function registerMailTemplates(): array
+    {
+        return [
+            'waka.support::mail.ticket.base' => [
+                'name' => "Envoyer le ticket par email",
+            ],
+        ];
+
+    }
+
+    
 
     /**
      * Register backend navigation.

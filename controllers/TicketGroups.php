@@ -2,29 +2,24 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-
+use System\Classes\SettingsManager; 
 /**
- * Ticket Group Back-end Controller
+ * Ticket Groups Backend Controller
  */
 class TicketGroups extends Controller
 {
+    /**
+     * @var array Behaviors that are implemented by this controller.
+     */
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        'Waka.Utils.Behaviors.BtnsBehavior',
-        'Backend.Behaviors.RelationController',
-        'Waka.Utils.Behaviors.SideBarUpdate',
-        'Waka.ImportExport.Behaviors.ExcelImport',
-        'Waka.ImportExport.Behaviors.ExcelExport',
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\RelationController::class,
+        \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
+        \Waka\Productor\Behaviors\ProductorBehavior::class,
     ];
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
-    public $btnsConfig = 'config_btns.yaml';
-    public $relationConfig = 'config_relation.yaml';
-    public $sideBarUpdateConfig = 'config_side_bar_update.yaml';
 
     public $requiredPermissions = ['waka.support.*'];
-    //FIN DE LA CONFIG AUTO
 
     public function __construct()
     {
@@ -32,8 +27,7 @@ class TicketGroups extends Controller
         BackendMenu::setContext('Waka.Support', 'support', 'side-menu-ticketgroups');
     }
 
-    //startKeep/
-
+    
     public function update($id)
     {
         $this->bodyClass = 'compact-container';
@@ -73,7 +67,4 @@ class TicketGroups extends Controller
         \Flash::success('groupe de tickets cloturé !');
         return \Backend::redirect($redirectUrl);
     }
-
-        //endKeep/
 }
-

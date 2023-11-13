@@ -1,0 +1,12 @@
+{
+    "name": "waka/wn-support-plugin",
+    "description": "Plugin support client",
+    "type": "winter-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Charles Saint Olive",
+            "email": "contact@notilac.fr"
+        }
+    ]
+}
