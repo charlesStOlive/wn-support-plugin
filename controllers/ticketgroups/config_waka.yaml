@@ -19,7 +19,7 @@ productor:
 
 
 controllerConfig:
-    breadcrump:
+    breadcrumb:
         inSettings: true 
         title: waka.support::lang.models.ticketgroup.label
         rows: 
