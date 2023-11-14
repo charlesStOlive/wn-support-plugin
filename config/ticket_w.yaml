@@ -9,7 +9,6 @@ ticket_w:
                 fields:  
                     support_user: required              
                     support_client: required              
-                # messages: waka.support::ticket_w_errors
 
         scopes:
             running:

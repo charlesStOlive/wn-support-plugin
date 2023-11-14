@@ -19,7 +19,6 @@ class Plugin extends PluginBase
      */
     public $require = [
         'Waka.Wutils',
-        'Waka.Workflow',
     ];
 
     /**
