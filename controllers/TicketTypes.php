@@ -18,7 +18,7 @@ class TicketTypes extends Controller
         \Waka\Wutils\Behaviors\WakaReorderController::class,
     ];
 
-    public $requiredPermissions = ['waka.support.*'];
+    public $requiredPermissions = ['waka.support.admin.*'];
 
     public function __construct()
     {

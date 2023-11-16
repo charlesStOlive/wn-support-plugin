@@ -130,30 +130,20 @@ class Plugin extends PluginBase
     {
         return [
             'waka.support.user.base'        => [
-                'label' => \Lang::get('waka.support::lang.permissions.user'),
-                'tab' => \Lang::get('waka.support::lang.permissions.tab')
+                'tab' => 'Waka - Support',
+                'label' => 'Utilisateur de base de support'
             ],
             'waka.support.user.super'        => [
-                'label' => \Lang::get('waka.support::lang.permissions.user_super'),
-                'tab' => \Lang::get('waka.support::lang.permissions.tab')
+                'tab' => 'Waka - Support',
+                'label' => 'Utilisateur avancé de support (inutilse aujourd\'hui)'
             ],
             'waka.support.admin.base'         => [
-                'label' => \Lang::get('waka.support::lang.permissions.admin_base'),
-                'tab'   => \Lang::get('waka.support::lang.permissions.tab')
+                'tab' => 'Waka - Support',
+                'label'   => 'Administrateur de base de support'
             ],
             'waka.support.admin.super'    => [
-                'label' => \Lang::get('waka.support::lang.permissions.admin_super'),
-                'tab'   => \Lang::get('waka.support::lang.permissions.tab')
-            ],
-        ];
-    }
-
-    public function registerWakaRules()
-    {
-        return [
-            'asks' => [],
-            'fncs' => [
-                ['Waka\Support\WakaRules\Fncs\Tickets'],
+                'tab' => 'Waka - Support',
+                'label'   => 'Administrateur avancé de support'
             ],
         ];
     }
@@ -215,7 +205,7 @@ class Plugin extends PluginBase
                 'class'       => 'Waka\Support\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'support help',
-                'permissions' => ['waka.support.access_settings']
+                'permissions' => ['waka.support.admin.super']
             ],
             'TicketTypes' => [
                 'label'       => \Lang::get('waka.support::lang.settings.label_ticket_types'),
@@ -225,7 +215,7 @@ class Plugin extends PluginBase
                 'url' => Backend::url('waka/support/tickettypes'),
                 'order'       => 501,
                 'keywords'    => 'support help',
-                'permissions' => ['waka.support.admin.super']
+                'permissions' => ['waka.support.admin.*']
             ],
 
         ];
