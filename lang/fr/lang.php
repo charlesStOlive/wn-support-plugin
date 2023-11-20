@@ -77,13 +77,6 @@ return [
     'navigation' => [
         'support' => 'Support',
     ],
-    'permissions' => [
-        'admin_base' => 'Droits utilisateur Admin (Notilac)',
-        'admin_super' => 'Droits utilisateur Admin (Notilac) Avancés',
-        'tab' => 'Waka - Support',
-        'user' => 'Droits utilisateur client',
-        'user_super' => 'Droits utilisateur client avancés',
-    ],
     'plugin' => [
         'description' => 'Gestion des tickets et des demandes d\'évolution',
         'name' => 'Support',
