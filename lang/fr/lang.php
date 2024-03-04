@@ -148,6 +148,7 @@ return [
                     'wait_support_to_abdn' => 'Abandonner le ticket',
                     'wait_support_to_running' => 'En cours de production',
                     'wait_support_to_sleep' => 'Mettre le ticket en sommeil',
+                    'wait_support_to_validated' => 'Forcer la validation',
                     'wait_support_to_wait_managment' => 'Envoyer au client',
                 ],
                 'comments' => [
@@ -167,6 +168,7 @@ return [
                 'wait_support_to_abdn' => 'Abandonner',
                 'wait_support_to_running' => 'En production',
                 'wait_support_to_sleep' => 'Mettre en veille',
+                'wait_support_to_validated' => 'Validation forcé',
                 'wait_support_to_wait_managment' => 'Envoyer au client',
             ],
         ],

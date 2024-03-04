@@ -109,6 +109,10 @@
     * Bouton : Valider et clôturer le ticket
     * Liste des fonctions 
         *  isCreatorAsking | type : gard
+* **Validation forcé** | code : wait_support_to_validated
+    * Bouton : Forcer la validation
+    * Liste des fonctions 
+        *  isSupport | type : gard
 
 ## Les jeux de validations des champs
 * **default**: Support client et support utilisateur sont obligatoires

@@ -3,6 +3,9 @@
 # ===================================
 
 fields:
+    name:
+        label: waka.support::lang.models.ticketgroup.name
+        span: left
     tickets:
         label: waka.support::lang.models.ticketgroup.tickets
         span: full

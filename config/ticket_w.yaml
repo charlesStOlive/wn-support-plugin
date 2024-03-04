@@ -250,3 +250,14 @@ ticket_w:
                         type: gard
             from: draft
             to: validated
+        wait_support_to_validated:
+            metadata: 
+                label: waka.support::lang.workflows.ticket_w.trans.wait_support_to_validated 
+                button: waka.support::lang.workflows.ticket_w.trans.buttons.wait_support_to_validated 
+                redirect: "close:1"
+                color: danger
+                fncs:
+                    isSupport:
+                        type: gard
+            from: wait_support
+            to: validated
